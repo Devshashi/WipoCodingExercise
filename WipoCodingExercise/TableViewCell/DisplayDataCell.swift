@@ -6,11 +6,11 @@
 //  Copyright © 2020 Devshashi. All rights reserved.
 //
 
-import Foundation
 
 
 import Foundation
 import UIKit
+import SDWebImage
 
 
 class DisplayDataCell: UITableViewCell {
@@ -97,6 +97,17 @@ class DisplayDataCell: UITableViewCell {
         
         super.init(coder: aDecoder)
     }
+    
+    //MARK: Configure Cell
+       
+       public func configure(with info:DataViewModel){
+          
+                  self.selectionStyle = .none
+                  self.titleLabel.text =  info.title
+                  self.descriptionLabel.text = info.description
+                  self.placeImageView.sd_setImage(with: URL(string: info.imageHref), placeholderImage: UIImage(named: "placeholderimage"))
+       }
+
     
 
 
