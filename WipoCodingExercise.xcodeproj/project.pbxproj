@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		1AFA7AC924AE6A5E0044E3CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */; };
 		1AFA7ACB24AE6A5E0044E3CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */; };
-		1AFA7ACD24AE6A5E0044E3CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7ACC24AE6A5E0044E3CB /* ViewController.swift */; };
 		1AFA7AD024AE6A5E0044E3CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA7ACE24AE6A5E0044E3CB /* Main.storyboard */; };
 		1AFA7AD224AE6A770044E3CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA7AD124AE6A770044E3CB /* Assets.xcassets */; };
 		1AFA7AD524AE6A770044E3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA7AD324AE6A770044E3CB /* LaunchScreen.storyboard */; };
 		1AFA7AE024AE6A780044E3CB /* WipoCodingExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7ADF24AE6A780044E3CB /* WipoCodingExerciseTests.swift */; };
+		1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,6 @@
 		1AFA7AC524AE6A5E0044E3CB /* WipoCodingExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WipoCodingExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1AFA7ACC24AE6A5E0044E3CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AFA7ACF24AE6A5E0044E3CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1AFA7AD124AE6A770044E3CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AFA7AD424AE6A770044E3CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		1AFA7ADB24AE6A780044E3CB /* WipoCodingExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WipoCodingExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AFA7ADF24AE6A780044E3CB /* WipoCodingExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipoCodingExerciseTests.swift; sourceTree = "<group>"; };
 		1AFA7AE124AE6A780044E3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 			children = (
 				1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */,
 				1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */,
-				1AFA7ACC24AE6A5E0044E3CB /* ViewController.swift */,
-				1AFA7ACE24AE6A5E0044E3CB /* Main.storyboard */,
+				1AFA7AEA24AE73660044E3CB /* Controller */,
+				1AFA7AED24AE748F0044E3CB /* Storyboard */,
 				1AFA7AD124AE6A770044E3CB /* Assets.xcassets */,
 				1AFA7AD324AE6A770044E3CB /* LaunchScreen.storyboard */,
 				1AFA7AD624AE6A770044E3CB /* Info.plist */,
@@ -97,6 +97,22 @@
 				1AFA7AE124AE6A780044E3CB /* Info.plist */,
 			);
 			path = WipoCodingExerciseTests;
+			sourceTree = "<group>";
+		};
+		1AFA7AEA24AE73660044E3CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1AFA7AED24AE748F0044E3CB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7ACE24AE6A5E0044E3CB /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AFA7ACD24AE6A5E0044E3CB /* ViewController.swift in Sources */,
+				1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */,
 				1AFA7AC924AE6A5E0044E3CB /* AppDelegate.swift in Sources */,
 				1AFA7ACB24AE6A5E0044E3CB /* SceneDelegate.swift in Sources */,
 			);
