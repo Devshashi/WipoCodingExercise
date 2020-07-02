@@ -14,6 +14,7 @@
 		1AFA7AD524AE6A770044E3CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFA7AD324AE6A770044E3CB /* LaunchScreen.storyboard */; };
 		1AFA7AE024AE6A780044E3CB /* WipoCodingExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7ADF24AE6A780044E3CB /* WipoCodingExerciseTests.swift */; };
 		1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */; };
+		1AFA7AF024AE75890044E3CB /* DisplayDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		1AFA7ADF24AE6A780044E3CB /* WipoCodingExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipoCodingExerciseTests.swift; sourceTree = "<group>"; };
 		1AFA7AE124AE6A780044E3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataViewController.swift; sourceTree = "<group>"; };
+		1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */,
 				1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */,
 				1AFA7AEA24AE73660044E3CB /* Controller */,
+				1AFA7AEE24AE75580044E3CB /* TableViewCell */,
 				1AFA7AED24AE748F0044E3CB /* Storyboard */,
 				1AFA7AD124AE6A770044E3CB /* Assets.xcassets */,
 				1AFA7AD324AE6A770044E3CB /* LaunchScreen.storyboard */,
@@ -113,6 +116,14 @@
 				1AFA7ACE24AE6A5E0044E3CB /* Main.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		1AFA7AEE24AE75580044E3CB /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AFA7AF024AE75890044E3CB /* DisplayDataCell.swift in Sources */,
 				1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */,
 				1AFA7AC924AE6A5E0044E3CB /* AppDelegate.swift in Sources */,
 				1AFA7ACB24AE6A5E0044E3CB /* SceneDelegate.swift in Sources */,
