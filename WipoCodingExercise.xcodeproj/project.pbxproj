@@ -15,6 +15,9 @@
 		1AFA7AE024AE6A780044E3CB /* WipoCodingExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7ADF24AE6A780044E3CB /* WipoCodingExerciseTests.swift */; };
 		1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */; };
 		1AFA7AF024AE75890044E3CB /* DisplayDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */; };
+		1AFA7AF324AE7B120044E3CB /* ListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AF224AE7B120044E3CB /* ListDataModel.swift */; };
+		1AFA7AF724AE7B770044E3CB /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AF624AE7B770044E3CB /* DataViewModel.swift */; };
+		1AFA7AFA24AE7BF00044E3CB /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFA7AF924AE7BF00044E3CB /* Webservice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		1AFA7AE124AE6A780044E3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AFA7AEB24AE73940044E3CB /* DisplayDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataViewController.swift; sourceTree = "<group>"; };
 		1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataCell.swift; sourceTree = "<group>"; };
+		1AFA7AF224AE7B120044E3CB /* ListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataModel.swift; sourceTree = "<group>"; };
+		1AFA7AF624AE7B770044E3CB /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		1AFA7AF924AE7BF00044E3CB /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,11 @@
 		1AFA7AC724AE6A5E0044E3CB /* WipoCodingExercise */ = {
 			isa = PBXGroup;
 			children = (
+				1AFA7AF824AE7BC90044E3CB /* Webservice */,
 				1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */,
 				1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */,
+				1AFA7AF524AE7B420044E3CB /* ViewModel */,
+				1AFA7AF124AE7A660044E3CB /* Models */,
 				1AFA7AEA24AE73660044E3CB /* Controller */,
 				1AFA7AEE24AE75580044E3CB /* TableViewCell */,
 				1AFA7AED24AE748F0044E3CB /* Storyboard */,
@@ -124,6 +133,30 @@
 				1AFA7AEF24AE75890044E3CB /* DisplayDataCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		1AFA7AF124AE7A660044E3CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7AF224AE7B120044E3CB /* ListDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1AFA7AF524AE7B420044E3CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7AF624AE7B770044E3CB /* DataViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1AFA7AF824AE7BC90044E3CB /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				1AFA7AF924AE7BF00044E3CB /* Webservice.swift */,
+			);
+			path = Webservice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,8 +261,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AFA7AF024AE75890044E3CB /* DisplayDataCell.swift in Sources */,
+				1AFA7AFA24AE7BF00044E3CB /* Webservice.swift in Sources */,
 				1AFA7AEC24AE73940044E3CB /* DisplayDataViewController.swift in Sources */,
+				1AFA7AF724AE7B770044E3CB /* DataViewModel.swift in Sources */,
 				1AFA7AC924AE6A5E0044E3CB /* AppDelegate.swift in Sources */,
+				1AFA7AF324AE7B120044E3CB /* ListDataModel.swift in Sources */,
 				1AFA7ACB24AE6A5E0044E3CB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
