@@ -20,30 +20,30 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     
     
     
-     //MARK:- View Life Cycle Methods
-      
-      override func viewDidLoad() {
-          super.viewDidLoad()
-          
-          initialSetup()
-          
-          if Reachability.shared.isConnectedToNetwork(){
-              
-              callGetApi()
-              
-          }else{
-              
-              let alertController = UIAlertController(title: "", message:
-                  "No Internet Found!", preferredStyle: .alert)
-              alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-              self.present(alertController, animated: true, completion: nil)
-          }
-          
-          
-          pullToRefresh()
-          
-          
-      }
+    //MARK:- View Life Cycle Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        initialSetup()
+        
+        if Reachability.shared.isConnectedToNetwork(){
+            
+            callGetApi()
+            
+        }else{
+            
+            let alertController = UIAlertController(title: "", message:
+                "No Internet Found!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        
+        pullToRefresh()
+        
+        
+    }
     
     
     //MARK: Pull to refresh Methods Implementation
@@ -63,35 +63,35 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     
     
     
-      @objc private func refreshListData(_ sender: Any) {
-          self.pullControl.endRefreshing()
-          callGetApi()
-      }
+    @objc private func refreshListData(_ sender: Any) {
+        self.pullControl.endRefreshing()
+        callGetApi()
+    }
     
     //MARK:-  Webservice Calling
-      
-      func callGetApi(){
-          
-          let url = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
-          
-          Webservices().getArtical(url: url){ response in
-              
-              if let listDataModel = response{
-                  
-                  if let articles = listDataModel.rows{
-                      self.articleListVM = DataListViewModel(row: articles)
-                      DispatchQueue.main.async {
-                          self.navigationItem.title = listDataModel.title
-                          self.displayTableView.reloadData()
-                      }
-                  }
-                  
-              }
-              
-          }
-          
-      }
-      
+    
+    func callGetApi(){
+        
+        let url = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
+        
+        Webservices().getArtical(url: url){ response in
+            
+            if let listDataModel = response{
+                
+                if let articles = listDataModel.rows{
+                    self.articleListVM = DataListViewModel(row: articles)
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = listDataModel.title
+                        self.displayTableView.reloadData()
+                    }
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     
     
     //MARK:- Tableview Design Setup
@@ -119,7 +119,7 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     
     
     
-   //MARK:- Tableview Datasource & Delegate Methods
+    //MARK:- Tableview Datasource & Delegate Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.articleListVM == nil ? 0 : self.articleListVM.numbrOfSection
@@ -136,7 +136,7 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
         }
         cell.configure(with: self.articleListVM.dataAtIndex(indexPath.row))
         
-               return cell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

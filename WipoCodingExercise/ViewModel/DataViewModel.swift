@@ -10,29 +10,29 @@ import Foundation
 
 struct DataListViewModel {
     
-   let row :[DataModel]
-  
+    let row :[DataModel]
+    
 }
 
 
 //MARK: Datasource for Tableview
 
 extension DataListViewModel{
-
-     var numbrOfSection:Int{
-          return 1
-     }
-
+    
+    var numbrOfSection:Int{
+        return 1
+    }
+    
     func numberOfRowsinSection(_ section:Int)->Int{
-         return  self.row.count
-     }
-
-      func dataAtIndex(_ index:Int)->DataViewModel{
-
-           let article = self.row[index]
-            return DataViewModel(article)
-     }
-
+        return  self.row.count
+    }
+    
+    func dataAtIndex(_ index:Int)->DataViewModel{
+        
+        let article = self.row[index]
+        return DataViewModel(article)
+    }
+    
 }
 
 
