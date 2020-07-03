@@ -103,9 +103,9 @@
 		1AFA7AC724AE6A5E0044E3CB /* WipoCodingExercise */ = {
 			isa = PBXGroup;
 			children = (
-				1AFA7AF824AE7BC90044E3CB /* Webservice */,
 				1AFA7AC824AE6A5E0044E3CB /* AppDelegate.swift */,
 				1AFA7ACA24AE6A5E0044E3CB /* SceneDelegate.swift */,
+				1AFA7AF824AE7BC90044E3CB /* Webservice */,
 				1AFA7AF524AE7B420044E3CB /* ViewModel */,
 				1AFA7AF124AE7A660044E3CB /* Models */,
 				1AFA7AEA24AE73660044E3CB /* Controller */,
@@ -536,6 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WipoCodingExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WipoCodingExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
