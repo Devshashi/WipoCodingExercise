@@ -17,6 +17,18 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     let displayTableView = UITableView()
     private var articleListVM:DataListViewModel!
     private var pullControl = UIRefreshControl()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                     #selector(self.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.gray
+        
+        return refreshControl
+    }()
+    
+    
+    
     
     
     
@@ -24,60 +36,30 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initialSetup()
-        
-        if Reachability.shared.isConnectedToNetwork(){
-            
-            callGetApi()
-            
-        }else{
-            
-            let alertController = UIAlertController(title: "", message:
-                "No Internet Found!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        
-        pullToRefresh()
-        
-        
+
     }
     
     
     //MARK: Pull to refresh Methods Implementation
     
-    
-    func pullToRefresh(){
-        
-        pullControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
-        if #available(iOS 10.0, *) {
-            displayTableView.refreshControl = pullControl
-        } else {
-            displayTableView.addSubview(pullControl)
-        }
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+
+          refreshControl.endRefreshing()
+           self.callGetApi()
+             
     }
     
     
-    
-    
-    @objc private func refreshListData(_ sender: Any) {
-        self.pullControl.endRefreshing()
-        callGetApi()
-    }
     
     //MARK:-  Webservice Calling
     
     func callGetApi(){
         
-        let url = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
-        
-        Webservices().getArtical(url: url){ response in
-            
-            if let listDataModel = response{
+        if Reachability.shared.isConnectedToNetwork(){
+            Webservices().getArtical(){ response in
                 
+                if let listDataModel = response{   // Success Response
                 if let articles = listDataModel.rows{
                     self.articleListVM = DataListViewModel(row: articles)
                     DispatchQueue.main.async {
@@ -85,9 +67,27 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
                         self.displayTableView.reloadData()
                     }
                 }
+                    
+                }else{  // Failure Response
+                    let error =  response.debugDescription
+                    print("err",error)
+                    let alertController = UIAlertController(title: "", message:"No Response Found!", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                }
                 
-            }
+        }
+    
+        }else{
             
+            let alertController = UIAlertController(title: "", message: "No Internet Found!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            self.displayTableView.reloadData()
+           }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+    
         }
         
     }
@@ -112,8 +112,9 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
         displayTableView.register(DisplayDataCell.self, forCellReuseIdentifier: "Cell")
         displayTableView.rowHeight = UITableView.automaticDimension
         displayTableView.estimatedRowHeight = UITableView.automaticDimension
+        self.displayTableView.addSubview(self.refreshControl)
         
-        
+        callGetApi()
         
     }
     
@@ -134,8 +135,8 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? DisplayDataCell else{
             fatalError("Display Data Cell not found...")
         }
-        cell.configure(with: self.articleListVM.dataAtIndex(indexPath.row))
         
+        cell.configure(with: self.articleListVM.dataAtIndex(indexPath.row))
         return cell
     }
     

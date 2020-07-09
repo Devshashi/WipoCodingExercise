@@ -14,37 +14,43 @@ import SystemConfiguration
 
 class Webservices{
     
+    //MARK: Variables
     
-    func getArtical(url:URL,completion: @escaping (ListDataModel?)->()){
-        
-        var string: String? = nil
-        let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-        
-        
+    let decoder = JSONDecoder()
+    let failuredata =  Data()
+    var string: String? = nil
+    let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+    
+    //MARK: Methods For calling Api
+    
+    func getArtical(completion: @escaping (ListDataModel?)->()){
+  
         do {
             if let url = URL(string: urlString) {
                 string = try String(contentsOf: url, encoding: String.Encoding(rawValue: String.Encoding.isoLatin1.rawValue))
             }
         } catch {
+            
+            print("Error in Api")
         }
-        
         
         let responseData = string?.data(using: .utf8)
         var _: Any? = nil
         do {
-            if let responseData = responseData {
-                let decoder = JSONDecoder()
-                let displayData = try? decoder.decode(ListDataModel.self, from: responseData)
-                if let displayData = displayData {
-                    completion(displayData)
+            if let responseData = responseData {   // Success response
+                
+                let successData = try? decoder.decode(ListDataModel.self, from: responseData)
+                if let successData = successData {
+                    completion(successData)
                 }
+            }else{ // Failure response
+                
+                let failureData = try? decoder.decode(ListDataModel.self, from: responseData ?? failuredata)
+                completion(failureData)
             }
         }
         
-        
-        
     }
-    
     
     
 }

@@ -15,9 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        
-        if #available(iOS 13.0, *) {
+    
             if let windowScene = scene as? UIWindowScene {
                 
                 let window = UIWindow(windowScene: windowScene)
@@ -29,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window = window
                 window.makeKeyAndVisible()
             }
-        } else {
+         else {
             // Fallback on earlier versions
         }
         

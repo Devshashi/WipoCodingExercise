@@ -49,11 +49,9 @@ class DisplayDataCell: UITableViewCell {
         return label
     }()
     
-    
-    
+
     //MARk:  Designing of Cell
-    
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -106,6 +104,7 @@ class DisplayDataCell: UITableViewCell {
         self.titleLabel.text =  info.title
         self.descriptionLabel.text = info.description
         self.placeImageView.sd_setImage(with: URL(string: info.imageHref), placeholderImage: UIImage(named: "placeholderimage"))
+
     }
     
     
