@@ -25,11 +25,7 @@ class WipoCodingExerciseTests: XCTestCase {
         
     }
     
-    
-    func test_pullToRefresh(){
-        XCTAssertNotNil(self.dataDisplayVC.pullToRefresh())
-    }
-    
+
     func test_initialSetup(){
         XCTAssertNotNil(self.dataDisplayVC.initialSetup())
     }

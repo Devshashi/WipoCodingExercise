@@ -9,6 +9,9 @@
 import UIKit
 import Foundation
 
+
+
+
 class DisplayDataViewController : UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     
@@ -28,16 +31,12 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
     }()
     
     
-    
-    
-    
-    
     //MARK:- View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-
+   
     }
     
     
@@ -50,39 +49,40 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
              
     }
     
-    
-    
+
     //MARK:-  Webservice Calling
     
     func callGetApi(){
         
         if Reachability.shared.isConnectedToNetwork(){
-            Webservices().getArtical(){ response in
+            Webservices().getArtical {  [weak self] result in
                 
-                if let listDataModel = response{   // Success Response
-                if let articles = listDataModel.rows{
-                    self.articleListVM = DataListViewModel(row: articles)
-                    DispatchQueue.main.async {
-                        self.navigationItem.title = listDataModel.title
-                        self.displayTableView.reloadData()
-                    }
-                }
+                switch result{
                     
-                }else{  // Failure Response
-                    let error =  response.debugDescription
-                    print("err",error)
-                    let alertController = UIAlertController(title: "", message:"No Response Found!", preferredStyle: .alert)
+                case .success(let listDataModel):
+                    
+                    if let articles = listDataModel.rows{
+                        self?.articleListVM = DataListViewModel(row: articles)
+                        DispatchQueue.main.async {
+                            self?.navigationItem.title = listDataModel.title
+                            self?.displayTableView.reloadData()
+                        }
+                    }
+            
+                case .failure(let error):
+                    print(error)
+                    let alertController = UIAlertController(title: "", message:error.localizedDescription, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-                    self.present(alertController, animated: true, completion: nil)
+                    self?.present(alertController, animated: true, completion: nil)
                 }
-                
-        }
+            
+            }
+            
     
         }else{
             
             let alertController = UIAlertController(title: "", message: "No Internet Found!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-            UIAlertAction in
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {UIAlertAction in
             self.displayTableView.reloadData()
            }
             alertController.addAction(okAction)
@@ -91,6 +91,7 @@ class DisplayDataViewController : UIViewController, UITableViewDataSource, UITab
         }
         
     }
+    
     
     
     

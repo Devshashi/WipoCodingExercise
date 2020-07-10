@@ -10,46 +10,68 @@ import Foundation
 import SystemConfiguration
 
 
+// MARK: Error enum Declaration
+
+enum NetworkError:Error {
+    case domainError
+    case decodingError
+    case urlError
+}
+
+// MARK: Http Method enum Declaration
+
+enum  HttpMethod:String {
+    case get = "GET"
+}
+
+
 // MARK: Webservice Class Implementation
 
 class Webservices{
     
-    //MARK: Variables
-    
-    let decoder = JSONDecoder()
-    let failuredata =  Data()
-    var string: String? = nil
-    let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    
+
     //MARK: Methods For calling Api
     
-    func getArtical(completion: @escaping (ListDataModel?)->()){
-  
-        do {
-            if let url = URL(string: urlString) {
-                string = try String(contentsOf: url, encoding: String.Encoding(rawValue: String.Encoding.isoLatin1.rawValue))
-            }
-        } catch {
+    func getArtical(completion:   @escaping(Result<ListDataModel, NetworkError>)->()){
+    
+             var string: String? = nil
+             let urlString = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+             let url = URL(string: urlString)
             
-            print("Error in Api")
-        }
-        
-        let responseData = string?.data(using: .utf8)
-        var _: Any? = nil
-        do {
-            if let responseData = responseData {   // Success response
-                
-                let successData = try? decoder.decode(ListDataModel.self, from: responseData)
-                if let successData = successData {
-                    completion(successData)
-                }
-            }else{ // Failure response
-                
-                let failureData = try? decoder.decode(ListDataModel.self, from: responseData ?? failuredata)
-                completion(failureData)
+             do {
+                     if let url = URL(string: urlString) {
+                         string = try String(contentsOf: url, encoding: String.Encoding(rawValue: String.Encoding.isoLatin1.rawValue))
+                     }
+                 } catch {
+
+                     print("Error in Api")
             }
-        }
-        
+             
+            var request = URLRequest(url: url!)
+            request.httpBody = nil
+            request.httpMethod = "GET"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                 
+            URLSession.shared.dataTask(with: request){ data , response, error in
+                guard  let _  =  data , error == nil else{
+                    completion(.failure(.domainError))
+                    return
+                }
+                
+            let response = string?.data(using: .utf8)
+            let result = try? JSONDecoder().decode(ListDataModel.self, from: response!)
+           
+    
+            if let result = result{
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
+                }else{
+
+                    completion(.failure(.decodingError))
+                }
+                                      
+            }.resume()
     }
     
     
